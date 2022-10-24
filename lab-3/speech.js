@@ -3,7 +3,8 @@ if ('webkitSpeechRecognition' in window) {
 		interimTxt = document.querySelector('#interim'),
 		accuracy = document.querySelector('#accuracy'),
 		startBtn = document.querySelector('#start'),
-		stopBtn = document.querySelector('#stop')
+		stopBtn = document.querySelector('#stop'),
+		recStatus = document.querySelector('#status')
 
 	const speechRecognition = new webkitSpeechRecognition()
 
@@ -12,13 +13,13 @@ if ('webkitSpeechRecognition' in window) {
 	speechRecognition.lang = 'en-US'
 
 	speechRecognition.onstart = () => {
-		document.querySelector('#status').style.display = 'block'
+		recStatus.style.display = 'block'
 	}
 	speechRecognition.onerror = () => {
-		document.querySelector('#status').style.display = 'none'
+		recStatus.style.display = 'none'
 	}
 	speechRecognition.onend = () => {
-		document.querySelector('#status').style.display = 'none'
+		recStatus.style.display = 'none'
 	}
 
 	speechRecognition.onresult = event => {
@@ -34,14 +35,12 @@ if ('webkitSpeechRecognition' in window) {
 				interim_transcript += event.results[i][0].transcript
 			}
 		}
-
 		finalTxt.innerHTML = final_transcript
 		interimTxt.innerHTML = interim_transcript
 	}
 
 	startBtn.onclick = () => {
 		speechRecognition.start()
-		speechRecognition.continuous = true
 		console.log('Recognition started')
 	}
 	stopBtn.onclick = () => {
@@ -51,27 +50,3 @@ if ('webkitSpeechRecognition' in window) {
 } else {
 	console.log('Speech Recognition Not Available')
 }
-
-// document.addEventListener('touchstart', on_touch)
-// document.addEventListener('mousedown', on_touch)
-// accuracy = document.getElementById('accuracy')
-// var recognition = new webkitSpeechRecognition()
-// recognition.lang = 'en-US'
-// function on_touch() {
-// 	if (recognition.start) {
-// 		recognition.start()
-// 		recognition_started = true
-// 	}
-// }
-// function onend() {
-// 	recognition.stop()
-// 	recognition_started = false
-// }
-// recognition.onend = onend
-// recognition.onsoundend = onend
-// recognition.onspeechend = onend
-// recognition.onresult = on_results
-// function on_results(e) {
-// 	document.getElementById('final').innerHTML += e.results[0][0].transcript
-// 	accuracy.innerHTML += ' ' + Math.round(e.results[0][0].confidence * 100) + '%'
-// }

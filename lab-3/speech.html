@@ -3,62 +3,9 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
 		<script src="./speech.js" defer></script>
-		<title>Speech To Text</title>
 	</head>
-	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-
-		body {
-			background-color: #1b2430;
-			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-			color: #fff;
-			margin: 5%;
-		}
-
-		h2 {
-			font-size: 2rem;
-			margin-bottom: 1rem;
-			text-align: center;
-		}
-		.btns {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			gap: 1rem;
-		}
-		.recBtn {
-			padding: 0.5rem 1.5rem;
-			font-size: 1.5rem;
-			background-color: #4e9f3d;
-			border-radius: 0.5rem;
-			border: none;
-			color: #fff;
-			cursor: pointer;
-		}
-		#start {
-			background-color: #4e9f3d;
-		}
-		#stop {
-			background-color: #f44336;
-		}
-		.txt {
-			border: 1px solid gray;
-			height: 300px;
-			border-radius: 8px;
-			margin: 1rem 0;
-			padding: 1rem;
-		}
-		#accuracy {
-			text-align: center;
-			font-size: 1.5rem;
-			margin-bottom: 1rem;
-		}
-	</style>
 	<body>
 		<h2>Speech To Text</h2>
 		<div class="txt">
@@ -66,10 +13,10 @@
 			<span id="interim"></span>
 		</div>
 		<p id="accuracy">Accuracy:</p>
+		<p id="status">Listenting <img class="dots" src="./dots-animation.svg" alt="dots" /></p>
 		<div class="btns">
 			<button id="start" class="recBtn">Start</button>
 			<button id="stop" class="recBtn">Stop</button>
-			<p id="status" style="display: none">Listenting ...</p>
 		</div>
 	</body>
 </html>
