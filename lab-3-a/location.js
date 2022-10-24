@@ -8,7 +8,7 @@ function on_success(position) {
 		'https://maps.googleapis.com/maps/api/staticmap?center=' +
 		latlon +
 		'&zoom=14&size=400x300&key=AIzaSyAlM_vaD6JkUWsn-lhMa5Zz_vwt9o0tbRM'
-	document.getElementById('map').innerHTML = "<img src='" + img_url + "'>"
+	document.getElementById('map').innerHTML = "<img id='map-img' src='" + img_url + "'>"
 }
 function on_error(e) {
 	document.getElementById('text').innerHTML = e.message
