@@ -1,10 +1,9 @@
-get_geo_position()
 function on_success(position) {
 	document.getElementById('latitude').innerHTML = 'Latitude = ' + position.coords.latitude
 	document.getElementById('longitude').innerHTML = 'Longitude= ' + position.coords.longitude
 	document.getElementById('acc').innerHTML = 'Accuracy = ' + position.coords.accuracy
 	document.getElementById('altitude').innerHTML = 'Altitude = ' + position.coords.altitude
-	let latlon = position.coords.latitude + ',' + position.coords.longitude
+	const latlon = position.coords.latitude + ',' + position.coords.longitude
 	const img_url =
 		'https://maps.googleapis.com/maps/api/staticmap?center=' +
 		latlon +
@@ -20,6 +19,7 @@ const geo_params = {
 	maximumAge: 0,
 }
 function get_geo_position() {
-	let geo = navigator.geolocation
+	const geo = navigator.geolocation
 	geo.getCurrentPosition(on_success, on_error, geo_params)
 }
+get_geo_position()
