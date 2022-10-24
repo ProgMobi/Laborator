@@ -1,7 +1,11 @@
 if ('webkitSpeechRecognition' in window) {
-	let speechRecognition = new webkitSpeechRecognition()
+	const finalTxt = document.querySelector('#final'),
+		interimTxt = document.querySelector('#interim'),
+		accuracy = document.querySelector('#accuracy'),
+		startBtn = document.querySelector('#start'),
+		stopBtn = document.querySelector('#stop')
 
-	let final_transcript = ''
+	const speechRecognition = new webkitSpeechRecognition()
 
 	speechRecognition.continuous = true
 	speechRecognition.interimResults = true
@@ -18,30 +22,38 @@ if ('webkitSpeechRecognition' in window) {
 	}
 
 	speechRecognition.onresult = event => {
-		let interim_transcript = ''
+		let final_transcript = '',
+			interim_transcript = ''
 
-		document.getElementById('final').innerHTML +=
-			'Ati rostit cuvantul: ' +
-			e.results[0][0].transcript +
-			', acuratete: ' +
-			e.results[0][0].confidence +
-			'<br>'
+		for (let i = event.resultIndex; i < event.results.length; ++i) {
+			if (event.results[i].isFinal) {
+				final_transcript += event.results[i][0].transcript
+				accuracy.innerHTML =
+					'Accuracy: ' + Math.round(event.results[i][0].confidence * 10000) / 100 + '%'
+			} else {
+				interim_transcript += event.results[i][0].transcript
+			}
+		}
 
-		// document.querySelector('#final').innerHTML = final_transcript
-		document.querySelector('#interim').innerHTML = interim_transcript
+		finalTxt.innerHTML = final_transcript
+		interimTxt.innerHTML = interim_transcript
 	}
 
-	document.querySelector('#start').onclick = () => {
+	startBtn.onclick = () => {
 		speechRecognition.start()
+		console.log('Recognition started')
 	}
-	document.querySelector('#stop').onclick = () => {
+	stopBtn.onclick = () => {
 		speechRecognition.stop()
+		console.log('Recognition stopped')
 	}
 } else {
 	console.log('Speech Recognition Not Available')
 }
+
 // document.addEventListener('touchstart', on_touch)
 // document.addEventListener('mousedown', on_touch)
+// accuracy = document.getElementById('accuracy')
 // var recognition = new webkitSpeechRecognition()
 // recognition.lang = 'en-US'
 // function on_touch() {
@@ -59,10 +71,6 @@ if ('webkitSpeechRecognition' in window) {
 // recognition.onspeechend = onend
 // recognition.onresult = on_results
 // function on_results(e) {
-// 	document.getElementById('text').innerHTML +=
-// 		'Ati rostit cuvantul: ' +
-// 		e.results[0][0].transcript +
-// 		', acuratete: ' +
-// 		e.results[0][0].confidence +
-// 		'<br>'
+// 	document.getElementById('final').innerHTML += e.results[0][0].transcript
+// 	accuracy.innerHTML += ' ' + Math.round(e.results[0][0].confidence * 100) + '%'
 // }
