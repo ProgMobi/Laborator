@@ -41,6 +41,7 @@ if ('webkitSpeechRecognition' in window) {
 
 	startBtn.onclick = () => {
 		speechRecognition.start()
+		speechRecognition.continuous = true
 		console.log('Recognition started')
 	}
 	stopBtn.onclick = () => {
