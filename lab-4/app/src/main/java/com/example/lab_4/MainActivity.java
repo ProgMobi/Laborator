@@ -15,14 +15,14 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		Button addButton = (Button) findViewById(R.id.addButton);
-		Button subButton = (Button) findViewById(R.id.subtractButton);
-		Button mulButton = (Button) findViewById(R.id.multiplyButton);
-		Button divButton = (Button) findViewById(R.id.divideButton);
-		Button powButton = (Button) findViewById(R.id.powerButton);
-		EditText firstEditText = (EditText) findViewById(R.id.firstEditText);
-		EditText secondEditText = (EditText) findViewById(R.id.secondEditText);
-		TextView result = (TextView) findViewById(R.id.result);
+		Button addButton = findViewById(R.id.addButton);
+		Button subButton = findViewById(R.id.subtractButton);
+		Button mulButton = findViewById(R.id.multiplyButton);
+		Button divButton = findViewById(R.id.divideButton);
+		Button powButton = findViewById(R.id.powerButton);
+		EditText firstEditText = findViewById(R.id.firstEditText);
+		EditText secondEditText = findViewById(R.id.secondEditText);
+		TextView result = findViewById(R.id.result);
 
 		addButton.setOnClickListener(view -> {
 			int num1 = Integer.parseInt(firstEditText.getText().toString());
