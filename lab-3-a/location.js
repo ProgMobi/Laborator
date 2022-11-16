@@ -1,3 +1,4 @@
+import API_KEY from './env.js'
 function on_success(position) {
 	document.getElementById('latitude').innerHTML = 'Latitude = ' + position.coords.latitude
 	document.getElementById('longitude').innerHTML = 'Longitude= ' + position.coords.longitude
@@ -7,7 +8,8 @@ function on_success(position) {
 	const img_url =
 		'https://maps.googleapis.com/maps/api/staticmap?center=' +
 		latlon +
-		'&zoom=14&size=400x300&key=AIzaSyAlM_vaD6JkUWsn-lhMa5Zz_vwt9o0tbRM'
+		'&zoom=14&size=400x300&key=' +
+		API_KEY
 	document.getElementById('map').innerHTML = "<img id='map-img' src='" + img_url + "'>"
 }
 function on_error(e) {
