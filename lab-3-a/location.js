@@ -1,4 +1,4 @@
-import API_KEY from './env.js'
+//import API_KEY from './env.js'
 function on_success(position) {
 	document.getElementById('latitude').innerHTML = 'Latitude = ' + position.coords.latitude
 	document.getElementById('longitude').innerHTML = 'Longitude= ' + position.coords.longitude
